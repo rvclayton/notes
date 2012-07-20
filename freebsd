@@ -1,0 +1,59 @@
+Put
+
+  fsck_y_enable="YES"
+
+in /etc/rc.conf to automatically run fsck when unclean file systems are found
+during boot-up.
+
+--
+
+Mounting loopback:
+
+  # mdconfig -a -t vnode -f /path/to/image.iso -u i	
+      : -a attach disk
+      : -t disk type 
+      : -f disk source 
+      : -u unit number
+
+  # mount -t cd9660 /dev/mdi <mnt-dir>
+      : -t mount type
+
+  # umount <mnt-dir>
+
+  # mdconfig -d -u i
+      : -d detach disk
+      : -u unit number
+
+where i is an unused md device number (0, 1, ...)
+
+--
+
+Updating ports:
+
+  $ pkg_version -v -L =		
+      : -v verbose output
+      : -L skip matching entries
+
+  $ more /usr/ports/UPDATING
+
+  $ sudo pkgdb -Ff
+      : -Ff fix held packages too.
+
+  # portupgrade -a
+      : -a upgrade all
+
+Don't forget to drop into root for portupgrade; sudo doesn't cut it.
+
+--
+
+To record a cd:
+
+  $ mkisofs -RJ -o p.iso n
+      : -R rock ridge features to support posix metadata
+      : -J joliet directories for ms compatibility.
+      : -o output filename
+
+  $ sudo cdrecord -eject -v dev=1,0,0 p.iso
+      : -v more chatter
+
+use "$ sudo cdrecord -scanbus" to figure out the dev-option argument.
