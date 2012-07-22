@@ -3,7 +3,11 @@ Put
   fsck_y_enable="YES"
 
 in /etc/rc.conf to automatically run fsck when unclean file systems are found
-during boot-up.
+during boot-up.  You might also want to try putting
+
+  background_fsck="NO"
+
+in there too.
 
 --
 
