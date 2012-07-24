@@ -1,3 +1,10 @@
+to fix problems with the mouse and keyboard in x, 
+
+  run "make config" in /usr/ports/x11-servers/xorg-server and turn off hal.
+  then "make deinstall install clean"
+
+--
+
 Put
 
   fsck_y_enable="YES"
@@ -61,3 +68,73 @@ To record a cd:
       : -v more chatter
 
 use "$ sudo cdrecord -scanbus" to figure out the dev-option argument.
+
+--
+
+To fix this kind of problem:
+
+  Affected package: libxul-1.9.2.28_1
+  Type of problem: mozilla -- multiple vulnerabilities.
+  Reference: http://portaudit.FreeBSD.org/[...]
+
+take a look
+
+  # portaudit -Fd
+
+update ports
+
+  # portsnap fetch update
+
+and try again
+
+  # portmaster libxul
+
+If that fails in the same way, do
+
+  # DISABLE_VULNERABILITIES=yes portmaster libxul
+
+--
+
+If the mouse stops working, try
+
+  $ sudo /etc/rc.d/moused restart
+
+to get it going again.
+
+--
+
+If package info is corrupt, try resetting the file permissions:
+
+  # find /var/db/pkg -type d -exec chmod 755 {} \;
+  # find /var/db/pkg -type f -exec chmod 644 {} \;
+
+--
+
+To update the ports tree:
+
+  # portsnap fetch update
+
+--
+
+  $ mount -t msdosfs /dev/da0s1 /mnt/flash
+
+  $ umount /mnt/flash
+
+--
+
+If a ports install fails because of a option misconfiguration, re-do the option
+selection using the config make command:
+
+  # make config deinstall install clean
+
+Type
+
+  $ make ports
+
+for details
+
+--
+
+To run mplayer on a full screen video, type
+
+  $ mplayer -vo x11 -xy 0.75 -zoom <video-file>
