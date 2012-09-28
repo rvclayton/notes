@@ -1,3 +1,20 @@
+To permanently label a disk partition for use in fstab, do
+
+  $ sudo glabel label <label> <filesystem>
+
+then use /dev/label/<label> as the filesystem entry in fstab.  For example
+
+  $ sudo glabel label wd500 /dev/da1s1d
+
+  $ grep wd500 /etc/fstab
+  /dev/label/wd500        /mnt/wd/500G    ufs     rw              0       0
+
+  $
+
+See www.freebsd.org/doc/en_US.ISO8859-1/books/handbook/geom-glabel.html
+
+--
+
 to fix problems with the mouse and keyboard in x, 
 
   run "make config" in /usr/ports/x11-servers/xorg-server and turn off hal.
