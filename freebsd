@@ -1,3 +1,36 @@
+To set things up so non-superusers can mount devices,
+
+To /etc/sysctl.conf add
+
+  vfs.usermount=1
+
+To /etc/devfs.rules add something like
+
+  [localrules=10]
+  add path 'da*' mode 0660 group users
+  add path 'md*' mode 0660 group users
+
+da* are flash devices and md* are virtual disks.  To /etc/rc.conf add
+
+  devfs_system_ruleset="localrules"
+
+To /etc/devfs.conf add
+
+  # Allow all users to mount the usb devices.
+  own   /dev/da0s1  root:operator
+  perm  /dev/da0s1  0666
+
+  # Allow all users to mount the cdrom drive.
+  own   /dev/cd0  root:operator
+  perm  /dev/cd0  0666
+
+Reboot.  Users should be in the operator group, and mount on directories they
+own.  Directories owned by root with a+rwx permissions don't work.
+
+http://forums.freebsd.org/showthread.php?t=20810
+
+--
+
 To permanently label a disk partition for use in fstab, do
 
   $ sudo glabel label <label> <filesystem>
