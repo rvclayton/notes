@@ -1,3 +1,16 @@
+To update ports after a system upgrade, do
+
+  # portupgrade -f ruby
+  # rm /var/db/pkg/pkgdb.db
+  # portupgrade -f ruby18-bdb
+  # rm /var/db/pkg/pkgdb.db /usr/ports/INDEX-*.db
+  # portupgrade -af
+
+See www.freebsd.org/doc/handbook/updating-upgrading-freebsdupdate.html for
+details.
+
+--
+
 To set things up so non-superusers can mount devices,
 
 To /etc/sysctl.conf add
