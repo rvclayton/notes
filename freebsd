@@ -1,3 +1,17 @@
+to get information about port or package x, type
+
+  $ pkg_info -xI x
+      # -x x is a regular expression matching against names.
+      # -I output an index line per port.
+
+or
+
+  $ pkg_version -v -s x
+      # -v verbose output
+      # -s select names containing the string x
+
+--
+
 To update ports after a system upgrade, do
 
   # portupgrade -f ruby
@@ -177,11 +191,20 @@ To update the ports tree:
 
   # portsnap fetch update
 
+To update from a cron job, replace "fetch" with "cron".  The update can be done
+at some time later than the fetch.
+
 --
 
   $ mount -t msdosfs /dev/da0s1 /mnt/flash
 
   $ umount /mnt/flash
+
+Don't forget the type.  Unlike debian, which can figure it out on its own,
+freebsd mounts fail if the type isn't specified.
+
+Also, mounts by non-root users should be to mount points owned by the user, and
+the user should be in the operator group.
 
 --
 
