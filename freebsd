@@ -1,3 +1,16 @@
+to get rid of "> succeeds port" or "? error - origin not found" port-version
+messages, do 
+
+  # cd /usr/ports
+  # make index
+  # portsdb -u
+
+these commands don't appear to be universally effective.
+
+http://myfreebsd.homeunix.net/hints_n_kinks/port-index.html
+
+--
+
 to get information about port or package x, type
 
   $ pkg_info -xI x
