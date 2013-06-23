@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 when a port upgrade fails becuase of a missing perl module, figure out where
 the module is and add the directory to the search path:
 
