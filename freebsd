@@ -1,3 +1,16 @@
+type
+
+  $ pkg_info -R <port>
+
+to find out which ports depend on a particular port, and
+
+  $ pkg_info -r <port>
+
+to find out what ports a particular port depends on.  <port> must be the full
+package name, including the version: "lcms2-2.5", not "lcms2".
+
+--
+
 when a port upgrade fails becuase of a missing perl module, figure out where
 the module is and add the directory to the search path:
 
