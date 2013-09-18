@@ -1,3 +1,25 @@
+The make targets of a port install broken out:
+
+  # make fetch
+  # make extract
+  # make patch
+  # make configure
+  # make build
+  # make install
+  # make clean
+
+http://www.freebsd.org/doc/en/books/porters-handbook/slow.html#slow-work
+
+--
+
+If the ghc port build freaks out on --build-id=none, it's because the build has
+confused /usr/bin/ld (which doesn't understand the --build-id option) and
+/usr/local/bin/ld (which does).  The fix is to straighten out the build, but
+the hack is to move /usr/bin/ld aside and link /usr/local/bin/ld as a
+replacement.
+
+--
+
 type
 
   $ pkg_info -R <port>
