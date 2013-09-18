@@ -128,6 +128,8 @@ to fix problems with the mouse and keyboard in x,
   run "make config" in /usr/ports/x11-servers/xorg-server and turn off hal.
   then "make deinstall install clean"
 
+worked on 130918 on freebsd 9.1 for a hp tc4400.
+
 --
 
 Put
