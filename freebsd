@@ -1,3 +1,38 @@
+The make targets of a port install broken out:
+
+  # make fetch
+  # make extract
+  # make patch
+  # make configure
+  # make build
+  # make install
+  # make clean
+
+http://www.freebsd.org/doc/en/books/porters-handbook/slow.html#slow-work
+
+--
+
+If the ghc port build freaks out on --build-id=none, it's because the build has
+confused /usr/bin/ld (which doesn't understand the --build-id option) and
+/usr/local/bin/ld (which does).  The fix is to straighten out the build, but
+the hack is to move /usr/bin/ld aside and link /usr/local/bin/ld as a
+replacement.
+
+--
+
+type
+
+  $ pkg_info -R <port>
+
+to find out which ports depend on a particular port, and
+
+  $ pkg_info -r <port>
+
+to find out what ports a particular port depends on.  <port> must be the full
+package name, including the version: "lcms2-2.5", not "lcms2".
+
+--
+
 when a port upgrade fails becuase of a missing perl module, figure out where
 the module is and add the directory to the search path:
 
@@ -114,6 +149,8 @@ to fix problems with the mouse and keyboard in x,
 
   run "make config" in /usr/ports/x11-servers/xorg-server and turn off hal.
   then "make deinstall install clean"
+
+worked on 130918 on freebsd 9.1 for a hp tc4400.
 
 --
 
