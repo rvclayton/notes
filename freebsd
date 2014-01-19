@@ -1,3 +1,17 @@
+To get rid of the portmaster "delete tarball" questions, use -d to delete the
+tarballs or -D to keep them, or in a portmaster rc file
+( /usr/local/etc/portmaster.rc or ~/.portmasterrc ) use
+
+  ALWAYS_SCRUB_DISTFILES=dopt
+
+to delete them or 
+
+  DONT_SCRUB_DISTFILES=Dopt
+
+to keep them.
+
+--
+
 The make targets of a port install broken out:
 
   # make fetch
