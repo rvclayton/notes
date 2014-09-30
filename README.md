@@ -1,6 +1,8 @@
 notes
 =====
 
-a collection of notes related to managing various systems.
+A collection of things to remember.
 
-`freebsd` &#8212; managing FreeBSD systems.
+`freebsd`: managing FreeBSD systems.
+
+`books`: read these books.
